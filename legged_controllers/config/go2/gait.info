@@ -141,7 +141,7 @@ dynamic_walk
   }
 }
 
-static_walk
+static_walk ;supposed best gait for walking up stairs
 {
   modeSequence
   {
@@ -151,12 +151,12 @@ static_walk
     [3]     LF_LH_RH
   }
   switchingTimes
-  {
-    [0]     0.0
-    [1]     0.3
-    [2]     0.6
-    [3]     0.9
-    [4]     1.2
+  {               ;default
+    [0]     0.0   ;0.0
+    [1]     0.3   ;0.3
+    [2]     0.6   ;0.6
+    [3]     0.9   ;0.9
+    [4]     1.2   ;1.2
   }
 }
 

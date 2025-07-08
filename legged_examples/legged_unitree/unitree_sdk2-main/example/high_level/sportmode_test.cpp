@@ -37,7 +37,7 @@ enum test_mode
   stop_move = 99
 };
 
-const int TEST_MODE = trajectory_follow;
+const int TEST_MODE = sit;
 
 class Custom
 {
@@ -76,7 +76,8 @@ public:
       break;
 
     case velocity_move: // 2. target velocity walking (controlled by velocity + yawSpeed)
-      sport_client.Move(0.3, 0, 0.3);
+      // std::cout << "Avery";
+      sport_client.Move(0, 0, 0);
       break;
 
     case trajectory_follow: // 3. path mode walking
@@ -243,6 +244,7 @@ int main(int argc, char **argv)
     std::cout << "Usage: " << argv[0] << " networkInterface" << std::endl;
     exit(-1);
   }
+  std::cout << "Avery";
 
   unitree::robot::ChannelFactory::Instance()->Init(0, argv[1]);
   Custom custom;

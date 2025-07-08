@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
   ros::init(argc, argv, "legged_unitree_hw");
   ros::NodeHandle nh;
   ros::NodeHandle robotHwNh("~");
-  std::string networkInterface = "enp4s0";//自己指定网卡名称
+  std::string networkInterface = "enx1c860b3399d0";//自己指定网卡名称
 
   ChannelFactory::Instance()->Init(0, networkInterface); //networkInterface
 

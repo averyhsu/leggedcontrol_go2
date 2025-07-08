@@ -10,7 +10,8 @@ int main()
 
     sc.SetTimeout(5.0f);
     sc.Init();
-
+    sc.SwitchGait(1);   // enable walking
+    sc.StandUp();       // unfurl legs
     //Test Api
     while (true)
     {

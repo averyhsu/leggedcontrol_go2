@@ -8,19 +8,19 @@ legged_robot_interface
 model_settings
 {
   positionErrorGain             0.0
-  phaseTransitionStanceTime     0.1
+  phaseTransitionStanceTime     0.1 ;default 0.1
 
   verboseCppAd                  true
   recompileLibrariesCppAd       false
   modelFolderCppAd              /tmp/legged_control/go2
 }
 
-swing_trajectory_config
+swing_trajectory_config         ;EDIT
 {
   liftOffVelocity               0.05
   touchDownVelocity            -0.1
-  swingHeight                   0.08
-  swingTimeScale                0.15
+  swingHeight                   0.18 ;default 0.08
+  swingTimeScale                0.15 ;default 0.15  scale factor for how fast the legs swing
 }
 
 ; DDP settings

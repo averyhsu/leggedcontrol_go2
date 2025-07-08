@@ -142,7 +142,7 @@ void UnitreeHW::read(const ros::Time& time, const ros::Duration& /*period*/) {
   for (int i = 0; i < 12; ++i) {
     jointData_[i].pos_ = low_state.motor_state()[i].q();
     jointData_[i].vel_ = low_state.motor_state()[i].dq();
-    jointData_[i].tau_ = low_state.motor_state()[i].tau_est();
+    jointData_[i].tau_ = low_state.motor_state()[i].tau_est(); //tau is torque
   }
   //温度读到了
   for (int i = 0; i < 12; ++i) {
@@ -181,12 +181,13 @@ void UnitreeHW::read(const ros::Time& time, const ros::Duration& /*period*/) {
 void UnitreeHW::write(const ros::Time& /*time*/, const ros::Duration& /*period*/) {
   std_msgs::Float64MultiArray kp_msg;
   for (int i = 0; i < 12; ++i) {
-    low_cmd.motor_cmd()[i].q() = static_cast<float>(jointData_[i].posDes_);
-    low_cmd.motor_cmd()[i].dq() = static_cast<float>(jointData_[i].velDes_);
+    //all data below taken from 'jointData_' taken from the controller
+    low_cmd.motor_cmd()[i].q() = static_cast<float>(jointData_[i].posDes_); //desired position
+    low_cmd.motor_cmd()[i].dq() = static_cast<float>(jointData_[i].velDes_); //desired velocity
     low_cmd.motor_cmd()[i].kp() = static_cast<float>(jointData_[i].kp_);
     
     low_cmd.motor_cmd()[i].kd() = static_cast<float>(jointData_[i].kd_);
-    low_cmd.motor_cmd()[i].tau() = static_cast<float>(jointData_[i].ff_);
+    low_cmd.motor_cmd()[i].tau() = static_cast<float>(jointData_[i].ff_); //desired toque
     // kp_msg.data.push_back(low_cmd.motor_cmd()[i].kp());
     // kp_msg.data.push_back(low_cmd.motor_cmd()[i].kd());
     // kp_msg.data.push_back(low_cmd.motor_cmd()[i].q());
